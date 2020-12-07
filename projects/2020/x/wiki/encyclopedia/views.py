@@ -30,6 +30,8 @@ def search(request):
         all_entries = util.list_entries()
         entries = []
         for entry in all_entries:
+            if query.lower() == entry.lower():
+                return HttpResponseRedirect(reverse('title_display', args=(entry,)))
             if query.lower() in entry.lower():
                 entries.append(entry)
         return render(request,"encyclopedia/search_results.html", {"query": query, "entries": entries})
