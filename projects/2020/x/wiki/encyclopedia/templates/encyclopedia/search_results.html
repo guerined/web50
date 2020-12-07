@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results for {{query}}</h1>
+
+    <ul>
+        {% if entries %}
+            {% for entry in entries %}
+                <li><a href="{% url 'title_display' entry %}">{{ entry }}</a></li>
+            {% endfor %}
+        {% else %}
+                No result! But you may want to create it? Click <a href="{% url 'add' %}">here</a> to create a new entry
+        {% endif %}
+    </ul>
+
+{% endblock %}

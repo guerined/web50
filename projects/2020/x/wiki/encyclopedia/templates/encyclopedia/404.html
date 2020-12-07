@@ -8,5 +8,5 @@
 {% block body %}
     <h1>404 - Gone fishing!</h1>
 
-    This page does not exist yet! But you may want to create it? Click here to create a new page on {{ title }}
+    This page does not exist yet! But you may want to create it? Click <a href="{% url 'add' %}">here</a> to create a new page on {{ title }}
 {% endblock %}
