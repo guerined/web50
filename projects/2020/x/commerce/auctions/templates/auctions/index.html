@@ -2,6 +2,22 @@
 
 {% block body %}
     <h2>Active Listings</h2>
+        <hr>
+        <br>
+        <section class="listings">
 
-    TODO
+            {% for listing in listings %}            
+                <div>
+                    <img src="{{ listing.photo_url }}" alt="{{ listing.listing_name }}">
+                    <h3>{{ listing.listing_name }}</h3>
+                    <h4>Price: {{ listing.starting_bid }}</h4>
+                    <a href="{% url 'listing' listing.id %}">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            {% endfor %}
+        </section>
+
+
+
+
+
 {% endblock %}

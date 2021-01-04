@@ -1,14 +1,17 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template.context import RequestContext
 from django.shortcuts import render
 from django.urls import reverse
-
-from .models import User
+from django.db.models import Max
+from .models import User, Listing
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    return render(request, "auctions/index.html", {
+        "listings": Listing.objects.filter(is_active=True)
+    })
 
 
 def login_view(request):
@@ -61,3 +64,11 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+def listing(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    bid = listing.bidlisting.last()
+
+    return render(request, "auctions/listing.html", {
+        "listing": listing, "bid": bid
+    })

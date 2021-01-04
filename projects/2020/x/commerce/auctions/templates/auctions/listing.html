@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{listing.listing_name}}</h2>
+    <br>
+    <h3>{{ listing.category}}</h3>
+        <hr>
+        <br>
+        <div>
+            <img src="{{ listing.photo_url }}" alt="{{ listing.listing_name }}">
+        </div>
+        <div>
+        <br>
+        Description:
+        {{ listing.description}}
+        <br>
+        Starting Bid:
+        {{ listing.starting_bid}}
+        <br>
+        Seller:
+        {{ listing.created_by}}
+        <br>
+        Created on:
+        {{ listing.created_on}}
+        <br>
+        Current Bid:
+            {{bid.id}} :
+            {{bid.bid}}
+            <br>
+        </div>
+        <hr>
+        Comments:
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,39 +1,50 @@
 {% load static %}
 
 <!DOCTYPE html>
+
+
 <html lang="en">
     <head>
-        <title>{% block title %}Auctions{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}The Wizard Auction | Welcome{% endblock %}</title>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  -->
+        <link rel="stylesheet" href="{% static 'auctions/styles.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     </head>
     <body>
-        <h1>Auctions</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
-            {% else %}
-                Not signed in.
-            {% endif %}
-        </div>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-        </ul>
-        <hr>
+        <div class="container">
+            <!-- Nav -->
+            <nav class="main-nav">
+                <h1 class="logo"><a href="index.html">AUCTION</a></h1>
+                {% if user.is_authenticated %}
+                    <div class="welcome-message">Welcome {{ user.username }}</div>
+                {% else %}
+                    <div class="welcome-message">Not signed in.</div>
+                {% endif %}
+                <ul class="right-menu">
+                    
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+    
+            <!-- Functions -->
+                <ul class="main-menu">
+                    <li><a href="{% url 'index' %}">Active Listing</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Watchlist</a></li>
+                    <li><a href="#">Create Listing</a></li>
+                </ul>
+
+        
+
+      
+        
         {% block body %}
         {% endblock %}
     </body>
