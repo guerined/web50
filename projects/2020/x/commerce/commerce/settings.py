@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'auctions',
     'django.contrib.admin',
     'django.contrib.auth',
+    'crispy_forms',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -51,6 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'commerce.urls'
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
 
 TEMPLATES = [
     {

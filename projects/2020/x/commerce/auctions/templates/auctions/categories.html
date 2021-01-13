@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+    <h2>Categories</h2>
+        <hr>
+        <br>
+            <ul>
+            {% for category in categories %}            
+                <li> <a href="{% url 'category_listing' category.id %}"> {{ category.category_name }} </a></li>
+            {% endfor %}
+            </ul>
+        <br>
+
+        <button class="btn btn-lg btn-success btn-block" type="submit">
+            <a href="{% url 'new_category' %}">Add a Category</a>
+        </button>
+
+
+
+
+
+{% endblock %}

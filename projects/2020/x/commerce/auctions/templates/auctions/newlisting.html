@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %} {% load crispy_forms_tags %}
+
+{% block body %}
+<br>
+<div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-8 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        New Listing
+                    </h5>
+                    <form class="form-signin" action="{% url 'newListing' %}" method="POST">
+                        {% csrf_token %}
+                            <fieldset class="form-group">
+                                <br />
+                                {{ form|crispy}}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-success btn-block" type="submit">
+                                    Post Listing
+                                </button>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock body%}

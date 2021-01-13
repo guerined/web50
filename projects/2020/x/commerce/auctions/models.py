@@ -16,7 +16,7 @@ class Listing(models.Model):
     listing_name = models.CharField(max_length=64)
     description = models.TextField()
     starting_bid = models.DecimalField(decimal_places=2, max_digits=10)
-    photo_url = models.URLField()
+    photo_url = models.URLField(blank=True)
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="createdby")
     created_on = models.DateTimeField()
     is_active = models.BooleanField()
