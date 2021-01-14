@@ -133,6 +133,7 @@ def listing(request, listing_id):
     listing = Listing.objects.get(id=listing_id)
     status_message = ""
     bid = Bid()
+    watched = True
 
     if Bid.objects.filter(listing=listing).exists():
         bid = listing.bidlisting.last()
@@ -144,10 +145,12 @@ def listing(request, listing_id):
     comments = listing.listingcomment.all()
     formbid = NewBidForm()
     error_message=""
-    if WatchList.objects.filter(watched_by=request.user, listing = listing).exists():
-        watched = True
-    else:
-        watched = False
+    
+    if request.user.is_authenticated:
+        if WatchList.objects.filter(watched_by=request.user, listing = listing).exists():
+            watched = True
+        else:
+            watched = False
     
 
     if not(listing.is_active):

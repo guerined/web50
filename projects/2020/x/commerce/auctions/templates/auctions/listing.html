@@ -81,7 +81,7 @@
 
                     
                     <div>    
-                        {% if user.is_authenticated  and listing.is_active %}
+                        {% if user.is_authenticated and listing.is_active %}
                             <form action="{% url 'listing' listing.id %}" method="POST">
                                 {% csrf_token %}
                                 <fieldset class="form-group">
