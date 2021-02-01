@@ -1,0 +1,31 @@
+textarea {
+    min-height: 400px;
+}
+
+.email_list {
+    border: 1px solid black;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.topic {
+    font-size: smaller;
+    margin: auto;
+    
+}
+
+.date {
+    font-size: small;
+    margin: auto;
+    color: gray;
+}
+
+.read {
+    background-color: #e8e8e8;
+}
+
+.read .sender {
+    font-weight: normal;
+}
