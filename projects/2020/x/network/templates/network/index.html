@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+  {% if user.is_authenticated %}
+  <p></p>
+  <div class="row">
+    <div class="w3-container w3-border w3-round-xlarge">
+      <h3>New Post</h3>
+      <form action="{% url 'newPost' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <textarea placeholder="Type your post here" name="post-content" cols="30" rows="3" class="form-control"></textarea>
+          <p></p>
+          <input type="Submit" value="Post" class="btn btn-primary">
+          <p></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  {% endif %}
+
+ 
+    <div class="row">
+      <p></p>
+        {% if tweets %}
+            {% for tweet in tweets%}
+            
+            <div class="w3-container w3-border w3-round-xlarge" id="container{{tweet.id}}">
+                <h5 id="'img{{tweet.id}}"><img src="{{ tweet.author.avatar.url }}" class="rounded-circle" alt="" height="25px" width="25px"> <a href="{% url 'profile' tweet.author.id %}"> {{ tweet.author.username }} </a></h5>
+                {% if user.username == tweet.author.username %} <button id="edit{{tweet.id}}" class="btn btn-link" onclick="edit('{{tweet.id}}')">Edit</button> {% endif %}
+            
+                <p id="body{{tweet.id}}">{{ tweet.body }}</p>
+                <p id="date{{tweet.id}}">
+                  {% if request.user.is_authenticated %}
+                    <i  onclick="like_unlike('{{tweet.id}}')"  class="bi  {% if request.user not in tweet.likes.all %} bi-heart {% else %} bi-heart-fill {% endif %}" id="icon{{tweet.id}}"></i>  {% endif %} <span id="number_of_likes{{tweet.id}}">{{tweet.number_of_likes }}</span> likes  - published on {{ tweet.publish }}
+                  
+                </p>
+            </div>
+            <div class="w3-container w3-border w3-round-xlarge" id="divedit{{tweet.id}}">
+            </div>
+           <p> </p>
+            {% endfor %}
+        {% else %}
+                <p>No Tweet!</p>
+        {% endif %}
+    </div>
+
+    
+    <!-- Pagination -->
+    <div class="row">
+        <div class="col-md-12">
+            {% if tweets.has_other_pages %}
+                <ul class="pagination">
+                {% if tweets.has_previous %}
+                  <li class="page_item">
+                    <a href="?page={{tweets.previous_page_number}}" class="page-link">&laquo;</a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a class="page-link">&laquo;</a>
+                  </li>  
+                {% endif %}
+                {% for i in tweets.paginator.page_range %}  
+                  {% if tweets.number == i %}
+                    <li class="page-item active">
+                      <a class="page-link">{{i}}</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item">
+                      <a href="?page={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                {% if tweets.has_next %}
+                    <li class="page-item">
+                      <a href="?page={{tweets.next_page_number}}" class="page-link">&raquo;</a>
+                    </li>
+                {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&raquo;</a>
+                </li> 
+                {% endif %}
+                </ul>
+            {% endif %}
+          </div>
+    </div>
+
+{% endblock %}
