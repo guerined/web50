@@ -183,11 +183,10 @@ function load_mailbox(mailbox) {
       
       let emailsender = document.createElement('div');
       emailsender.className = 'col-2 sender';
-      if (mailbox == 'inbox') {
-        emailsender.innerHTML = email["sender"];
-      }
-      else if (mailbox == 'sent') {
+      if (mailbox == 'sent') {
         emailsender.innerHTML = email["recipients"]["0"];
+      } else {
+        emailsender.innerHTML = email["sender"];
       }
       rowdiv.append(emailsender);
 
