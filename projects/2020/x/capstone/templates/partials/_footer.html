@@ -1,0 +1,44 @@
+{% load static %}
+
+<div class="bg-light text-primary py-5" id="footer-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="{% static 'img/logo.png' %}" alt="" width="50">
+        <h3 class="d-inline align-middle">QR Club</h3>
+        <p class=" text-secondary">Boost Your Business Today!</p>
+      </div>
+      
+      <div class="col-md-3">
+        <h3>SERVICE</h3>
+        <ul>
+          <li><a href="{% url 'register' %}">Create QR code</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>COMPANY</h3>
+        <ul>
+          <li> <a href="{% url 'contract' %}">Terms of Use and Contract</a></li>
+          <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+          <li> <a href="{% url 'cookies' %}">Cookies Policy</a></li>
+      </div>
+      <div class="col-md-3">
+        <h3>HELP</h3>
+        <ul>
+          <li> <a href="{% url 'faq' %}">FAQ</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+      </div>
+    </div>
+    </div>
+</div>
+<footer id="main-footer" class="py-3 bg-primary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-6 ms-auto">
+          <p class="lead">
+            Copyright &copy;2023
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>

@@ -1,0 +1,257 @@
+$primary: #173fbc;
+$secondary: #f65648;
+$primary-overlay: rgba(23, 63, 188, 0.7);
+$primary-overlay2: rgba(23, 63, 188, 0.3);
+
+body {
+    margin-top: 105px;
+}
+
+
+.navbar {
+    box-shadow: 2px 2px 5px $primary;
+    opacity: 0.9;
+    background: #fff;
+
+    .nav-item {
+        font-size: 1.4rem;
+        padding-right: 1.4rem;
+    }
+}
+
+#showcase {
+    position:relative;
+    background: url('../img/qr-overlay.jpg') no-repeat center center;
+    min-height: 700px;
+
+    .primary-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $primary-overlay;
+    }
+}
+
+
+#showcase2 {
+    position:relative;
+    background: url('../img/qr-overlay2.jpg') no-repeat center center;
+    min-height: 400px;
+
+    .primary-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $primary-overlay2;
+    }
+}
+
+#registerimg {
+    position:relative;
+    background: url('../img/registerimg.jpg') no-repeat center center;
+    min-height: 400px;
+
+    .primary-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $primary-overlay2;
+    }
+}
+
+#how {
+    .steps {
+        padding: 20px;
+        margin-bottom: 40px;
+        margin-right: 15px;
+        opacity: 0.9;
+    }
+    img {
+        width: 50px;
+        float: left;
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+}
+
+#footer-link {
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 5px 0 0 0;
+
+        li {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#footer-link {
+    a {
+        text-decoration: none;
+    }
+}
+
+@media(max-width: 992px) {
+    #showcase {
+        min-height: 500px;
+    }
+}
+
+@media(max-width: 576px) {
+    #showcase {
+        min-height: 400px;
+
+    }
+    .class17 {
+        display: none;
+    }
+    .class13 {
+        display: none;
+    }
+    .class14 {
+        display: none;
+    }
+}
+
+
+.class1 {
+    width: 100%;
+    display: flex;
+    position: relative;
+    box-shadow: 0px 2px 8px #E6E6E6;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    padding: 20px 24px 20px 11px;
+    min-height: 129px;
+}
+
+.class2 {
+    flex: 1;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 53px 80px auto 110px 201px;
+}
+
+
+.class3 {
+    align-self: center;
+    margin-right: 9px;
+}
+
+.class4 {
+    display: flex;
+    align-items: center;
+}
+
+.class5 {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+}
+
+.class6 {
+    position: relative;
+}
+
+.class7 {
+    width: 50px;
+    height: 50px;
+    border: solid 2px #EAEAEA;
+    display: flex;
+    background: white;
+    align-items: center;
+    margin-right: 0;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.class8 {
+    margin-left: 20px;
+    padding-right: 20px;
+}
+
+.class9 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FE8E3E;
+    line-height: 20px;
+}
+
+.class10 {
+   hyphens: auto;
+   font-size: 14px;
+   word-break: break-word;
+   font-weight: 400;
+   line-height: 24px;
+   margin-bottom: 0;
+}
+
+.class11 {
+    color: #96949C;
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.class12 {
+    width: 67px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.class13 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-bottom: 7px;
+}
+
+.class14 {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #FE8E3E;
+}
+
+.class15 {
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+
+.class16 {
+    margin-right: 12px;
+    width: 40px;
+}
+
+
+.panel {
+    box-shadow: none;
+  }
+
+.panel-heading {
+    border-bottom: 0;
+  }
+
+.panel-title {
+    font-size: 17px;
+  }
+
+.panel-body *:first-child {
+    margin-top: 0;
+  }

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="margin-top: 150px;">
+    
+    <h2>Insert a link (including http:// or https://) below to generate a QR Code</h2>
+    <form action="{% url 'dashboard' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="link" placeholder="Insert a link here">
+        <button class="btn btn-primary" type="submit">URL QR Code</button>
+    </form>
+</div>
+
+<div class="container large">
+         {% for qr in qrs %}
+        <div class="container">
+            <div class="class1 row align-items-center">
+                <div class="col-2 class17">
+                    <div class="class7">
+                        <img src="{{ qr.qr_code.url }}" alt="QR Code" style="width:45px;height:45px;">
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4">
+                    <div class="class9">Website</div>
+                    <div class="class10">{{ qr.link }}</div>
+                    <div class="class11">Created:Jun 24, 2023</div>
+                </div>
+                <div class="col-2 class17">
+                    <div class="class13"> {{qr.times_scanned}} </div>
+                    <div class="class14">Scans</div>
+                </div>
+                <div class="col-6 text-center col-sm-4">
+                    <a href="{{ qr.qr_code.url }}" download style="text-decoration: none; color: inherit;">
+                        <span class="class16">
+                            <span class="material-symbols-outlined">
+                                download
+                            </span>
+                        </span>
+                    </a>
+                    <form method="POST" action="{% url 'delete' qr.id %}" style="border: none; background: none; display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="border: none; background: none;">
+                            <span class="material-symbols-outlined class17">
+                                delete
+                            </span>
+                        </button>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
+        {% endfor %}
+    
+</div>
+{% endblock %}

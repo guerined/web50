@@ -1,0 +1,41 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top py-4" id="main-nav">
+    <div class="container">
+      <a href="{% url 'index' %}" class="navbar-brand">
+        <img src="{% static 'img/logo.png' %}" width="70" height="50" alt="">
+        <h3 class="d-inline align-middle text-primary">QR Club</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="{% url 'index' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'faq' %}" class="nav-link">FAQ</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+            </li>
+            {% else %}
+              <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+              </li>
+              <li class="nav-item">
+               <a href="{% url 'register' %}" class="nav-link">Register</a>
+              </li>
+            {% endif %}
+          </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" id="registerimg"><div class="primary-overlay text-white"></div></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5 mb-5">
+
+                <!-- Pills navs -->
+                <ul class="nav nav-pills nav-justified mb-3 mt-5">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'register' %}">Register</a>
+                    </li>
+                </ul>
+                <!-- Pills navs -->
+                
+                <!-- Pills content -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active">
+                        {% if message %}
+                             <div>{{ message }}</div>
+                         {% endif %}
+                    <form action="{% url 'register'%}" method="post" id="register-form">
+                        {% csrf_token %}
+                        <!-- To implement in production
+                        <div class="text-center mb-3">
+                        <p>Sign up with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-facebook"></i>
+                        </button>
+                
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-google"></i>
+                        </button>
+                
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-twitter"></i>
+                        </button>
+                
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-github"></i>
+                        </button>
+                        </div>
+                
+                        <p class="text-center">or:</p>
+                        -->
+                        <!-- Name input -->
+                        <!-- To implement in production
+                        <div class="form-outline mb-4">
+                        <input type="text" name="registerName" class="form-control" />
+                        <label class="form-label" for="registerName">Full Name</label>
+                        </div>
+                        -->
+                
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                        <input type="text" name="registerUsername" class="form-control" />
+                        <label class="form-label" for="registerUsername">Username</label>
+                        </div>
+                
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                        <input type="email" name="registerEmail" class="form-control" />
+                        <label class="form-label" for="registerEmail">Email</label>
+                        </div>
+                
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                        <input type="password" name="registerPassword" class="form-control" />
+                        <label class="form-label" for="registerPassword">Password</label>
+                        </div>
+                        
+                        <!-- Repeat Password input -->
+                        <div class="form-outline mb-4">
+                        <input type="password" name="registerRepeatPassword" class="form-control" id="password2" />
+                        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                        </div>
+                                        
+                        <!-- Checkbox -->
+                        <!-- To implement in production
+                        <div class="form-check d-flex justify-content-center mb-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" name="registerCheck" checked
+                            aria-describedby="registerCheckHelpText" id="terms"/>
+                        <label class="form-check-label" for="registerCheck">
+                            I have read and agree to the <a href="{% url 'contract' %}" target="_blank">terms</a>
+                        </label>
+                        </div>
+                        -->
+                
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+                    </form>
+                    Already have an account? <a href="{% url 'login' %}">Login</a> here.
+                    </div>
+                </div>
+                <!-- Pills content -->
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
