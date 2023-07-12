@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import render
-from .models import User, QRCode
+from .models import User, QRCode, Contact
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.urls import reverse
@@ -88,6 +88,17 @@ def logout_view(request):
 
 
 def contact(request):
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+        
+        contact = Contact(name=name, email=email, message=message)
+        contact.save()
+
+        messages.success(request, 'You request has been submitted, we will get back to you soon')
+    
     return render(request, 'pages/contact.html')
 
 

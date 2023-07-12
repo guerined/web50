@@ -16,4 +16,5 @@ urlpatterns = [
     path('qr/<str:shortened_part>',
          views.redirect_url_view, name='redirect_url_view'),
     path('delete/<int:qr_id>', views.delete, name='delete'),
+    path('contact/', views.contact, name='contact'),
 ]
